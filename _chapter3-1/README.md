@@ -1,2 +1,3 @@
-# OpenglESGame
-use OpenglES to realize the Game
+#3.1 处理复杂图形
+* 使用自定义几何图形数据构建VBO和VAO
+* 处理触摸屏事件
