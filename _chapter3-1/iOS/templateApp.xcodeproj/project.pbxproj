@@ -13,6 +13,8 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		A2E65A9A1D13D1C8000EA07C /* model.obj in Resources */ = {isa = PBXBuildFile; fileRef = A2E65A991D13D1C8000EA07C /* model.obj */; };
+		A2E65A9C1D13D1D7000EA07C /* model.mtl in Resources */ = {isa = PBXBuildFile; fileRef = A2E65A9B1D13D1D7000EA07C /* model.mtl */; };
 		E002BCF5135BEC0A00FCFC0B /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E002BCF0135BEC0A00FCFC0B /* EAGLView.mm */; };
 		E002BCF6135BEC0A00FCFC0B /* templateAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E002BCF2135BEC0A00FCFC0B /* templateAppDelegate.mm */; };
 		E002BCF7135BEC0A00FCFC0B /* templateViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E002BCF4135BEC0A00FCFC0B /* templateViewController.mm */; };
@@ -242,8 +244,6 @@
 		E0CEEFC713A2CF0A008C55D3 /* templateApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0CEEFC513A2CF0A008C55D3 /* templateApp.cpp */; };
 		E0CEF08113A2F8D0008C55D3 /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E0CEF07F13A2F8D0008C55D3 /* fragment.glsl */; };
 		E0CEF08213A2F8D0008C55D3 /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E0CEF08013A2F8D0008C55D3 /* vertex.glsl */; };
-		E0CEF08513A2F8DB008C55D3 /* model.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E0CEF08313A2F8DB008C55D3 /* model.mtl */; };
-		E0CEF08613A2F8DB008C55D3 /* model.obj in Resources */ = {isa = PBXBuildFile; fileRef = E0CEF08413A2F8DB008C55D3 /* model.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -254,6 +254,8 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		A2E65A991D13D1C8000EA07C /* model.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.obj; sourceTree = "<group>"; };
+		A2E65A9B1D13D1D7000EA07C /* model.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.mtl; sourceTree = "<group>"; };
 		E002BCEF135BEC0A00FCFC0B /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		E002BCF0135BEC0A00FCFC0B /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		E002BCF1135BEC0A00FCFC0B /* templateAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAppDelegate.h; sourceTree = "<group>"; };
@@ -758,8 +760,6 @@
 		E0CEEFC613A2CF0A008C55D3 /* templateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = templateApp.h; path = ../templateApp.h; sourceTree = SOURCE_ROOT; };
 		E0CEF07F13A2F8D0008C55D3 /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment.glsl; path = ../fragment.glsl; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		E0CEF08013A2F8D0008C55D3 /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex.glsl; path = ../vertex.glsl; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		E0CEF08313A2F8DB008C55D3 /* model.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = model.mtl; path = "../../data/chapter3-1/model.mtl"; sourceTree = SOURCE_ROOT; };
-		E0CEF08413A2F8DB008C55D3 /* model.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = model.obj; path = "../../data/chapter3-1/model.obj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -826,10 +826,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A2E65A9B1D13D1D7000EA07C /* model.mtl */,
+				A2E65A991D13D1C8000EA07C /* model.obj */,
 				E0CEF07F13A2F8D0008C55D3 /* fragment.glsl */,
 				E0CEF08013A2F8D0008C55D3 /* vertex.glsl */,
-				E0CEF08313A2F8DB008C55D3 /* model.mtl */,
-				E0CEF08413A2F8DB008C55D3 /* model.obj */,
 				E03906ED1380CCD400ECB6EC /* templateViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				E0B7E9D313849A730076BE71 /* templateApp-Info.plist */,
@@ -1473,11 +1473,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				A2E65A9A1D13D1C8000EA07C /* model.obj in Resources */,
 				E03906EE1380CCD400ECB6EC /* templateViewController.xib in Resources */,
 				E0CEF08113A2F8D0008C55D3 /* fragment.glsl in Resources */,
 				E0CEF08213A2F8D0008C55D3 /* vertex.glsl in Resources */,
-				E0CEF08513A2F8DB008C55D3 /* model.mtl in Resources */,
-				E0CEF08613A2F8DB008C55D3 /* model.obj in Resources */,
+				A2E65A9C1D13D1D7000EA07C /* model.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
