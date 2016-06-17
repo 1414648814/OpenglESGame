@@ -45,8 +45,11 @@ PROGRAM *program = NULL;
 TEMPLATEAPP templateApp = { templateAppInit,
 							templateAppDraw,
 							templateAppToucheBegan,
-							templateAppToucheMoved };
+							templateAppToucheMoved,
+                            templateAppToucheEnded,
+                            templateAppToucheCancelled};
 
+//绘制的回调函数
 void program_draw_callback( void *ptr ) {
 
 	PROGRAM *curr_program = ( PROGRAM * )ptr;
@@ -170,6 +173,7 @@ void templateAppInit( int width, int height ) {
 
 	glBindBuffer( GL_ARRAY_BUFFER, objmesh->vbo );
 
+    //
 	attribute = PROGRAM_get_vertex_attrib_location( program, ( char * )"POSITION" );
 
 	glEnableVertexAttribArray( attribute );
@@ -180,7 +184,8 @@ void templateAppInit( int width, int height ) {
 						   GL_FALSE,
 						   stride,
 						   ( void * )NULL );
-
+    
+    //
 	attribute = PROGRAM_get_vertex_attrib_location( program, ( char * )"NORMAL" );
 
 	glEnableVertexAttribArray( attribute );
@@ -201,14 +206,15 @@ void templateAppInit( int width, int height ) {
 
 void templateAppDraw( void ) {
 
-	glClearColor( 0.5f, 0.5f, 0.5f, 1.0f );
+	glClearColor( 0.5f, 0.5f, 0.5f, -1.0f );
 	glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
 
 
 	GFX_set_matrix_mode( MODELVIEW_MATRIX );
+    //加载矩阵，设置eye,center,up
 	GFX_load_identity(); {
 	
-		vec3 e = { 0.0f, -4.0f, 0.0f },
+		vec3 e = { 0.0f,  -4.0f, 0.0f },
 			 c = { 0.0f,  0.0f, 0.0f },
 			 u = { 0.0f,  0.0f, 1.0f };
 
@@ -225,12 +231,19 @@ void templateAppDraw( void ) {
 					( void * )NULL );
 }
 
-
+//触屏动作
 void templateAppToucheBegan( float x, float y, unsigned int tap_count ) {
 }
 
 
 void templateAppToucheMoved( float x, float y, unsigned int tap_count ) {
+}
+
+void templateAppToucheEnded( float x, float y, unsigned int tap_count ) {
+}
+
+void templateAppToucheCancelled( float x, float y, unsigned int tap_count ) {
+    
 }
 
 
