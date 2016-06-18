@@ -25,10 +25,13 @@ as being the original software.
 
 */
 
+//用来转换顶点位置的统一矩阵
 uniform mediump mat4 MODELVIEWPROJECTIONMATRIX;
 
+//用来保存顶点位置的顶点属性
 attribute mediump vec3 POSITION;
 
+//为顶点法线声明新的顶点属性，以及用来建立该属性值与片段着色器之间的桥梁的相应的varying变量；
 attribute lowp vec3 NORMAL;
 
 varying lowp vec3 normal;
