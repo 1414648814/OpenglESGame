@@ -79,7 +79,7 @@ void program_draw_callback( void *ptr ) {
 	}
 }
 
-
+//获取obj文件，再获取该文件的网格
 void templateAppInit( int width, int height ) {
 
 	atexit( templateAppExit );
@@ -90,6 +90,7 @@ void templateAppInit( int width, int height ) {
 
 	GFX_set_matrix_mode( PROJECTION_MATRIX );
 	GFX_load_identity();
+    //建立透视投影矩阵
 	GFX_set_perspective( 45.0f,
 						 ( float )width / ( float )height,
 						 0.1f,
@@ -101,9 +102,10 @@ void templateAppInit( int width, int height ) {
 							  FRAGMENT_SHADER,
 							  1,
 							  DEBUG_SHADERS,
-							  NULL,
-							  program_draw_callback );
+							  NULL,   //属性回调函数
+							  program_draw_callback );   //绘制回调函数
 
+    //加载obj文件
 	obj = OBJ_load( OBJ_FILE, 1 );   
 
 
@@ -116,7 +118,7 @@ void templateAppInit( int width, int height ) {
 				 size   = 0;
 
     //获取结构指针中第一个网格的指针，
-	objmesh = &obj->objmesh[ 0 ];
+	objmesh = &obj->objmesh[ 0 ]; //里面包含多个obj文件的实体
 
     //计算顶点数据数组的总大小，以便可以分配为VBO构建GLES友好的顶点数据数组所需的内存大小
 	size = objmesh->n_objvertexdata * sizeof( vec3 ) * sizeof( vec3 );
@@ -159,6 +161,8 @@ void templateAppInit( int width, int height ) {
 
 	glBindBuffer( GL_ARRAY_BUFFER, 0 );
 
+    //----------------------------------------------------
+    
     //为第一个objmesh三角形列表创建一个新id，并使当前索引处于活动状态
 	glGenBuffers( 1, &objmesh->objtrianglelist[ 0 ].vbo );
 	
@@ -187,6 +191,7 @@ void templateAppInit( int width, int height ) {
 
 	glBindVertexArrayOES( objmesh->vao );
 
+    
     //开始构建VAO列表绑定，其中包括相关的调用来设置数组缓冲区
 	glBindBuffer( GL_ARRAY_BUFFER, objmesh->vbo );
 
@@ -201,6 +206,8 @@ void templateAppInit( int width, int height ) {
 						   GL_FALSE,
 						   stride,
 						   ( void * )NULL );
+    
+    //--------------------------------------------------------
     
     //以处理顶点位置相同的方式处理顶点法线，但是顶点属性指针调用的最后一个参数稍有不同，必须指定距离下一个
     //数据类型的偏移量
