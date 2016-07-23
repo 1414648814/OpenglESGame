@@ -24,20 +24,15 @@ as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
 */
-//用来转换顶点位置的统一矩阵
-uniform mediump mat4 MODELVIEWPROJECTIONMATRIX;
 
-//用来保存顶点位置的顶点属性
-attribute mediump vec3 POSITION;
+#import <UIKit/UIKit.h>
 
-//为顶点法线声明新的顶点属性，以及用来建立该属性值与片段着色器之间的桥梁的相应的varying变量；
-attribute lowp vec3 NORMAL;
+int main( int argc, char *argv[] ) {
 
-varying lowp vec3 normal;
+	setenv( "FILESYSTEM", argv[ 0 ], 1 );
 
-void main( void ) { 
-
-   normal = ( NORMAL + 1.0 ) * 0.5;
-
-   gl_Position = MODELVIEWPROJECTIONMATRIX * vec4( POSITION, 1.0 );
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    int retVal = UIApplicationMain(argc, argv, nil, nil);
+    [pool release];
+    return retVal;
 }

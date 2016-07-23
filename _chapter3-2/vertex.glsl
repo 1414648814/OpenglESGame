@@ -24,8 +24,14 @@ as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
 */
-//用来转换顶点位置的统一矩阵
-uniform mediump mat4 MODELVIEWPROJECTIONMATRIX;
+
+uniform mediump mat4 MODELVIEWMATRIX;  //处理模型视图
+uniform mediump mat4 PROJECTIONMATRIX;  //处理投影矩阵
+uniform mediump mat3 NORMALMATRIX;  //当前的法线矩阵
+uniform mediump vec3 LIGHTPOSITION;  //当前光源位置的uniform变量
+
+// 用于连接片段着色器和顶点的光的RGB颜色
+varying lowp vec3 lightcolor;
 
 //用来保存顶点位置的顶点属性
 attribute mediump vec3 POSITION;
@@ -33,11 +39,20 @@ attribute mediump vec3 POSITION;
 //为顶点法线声明新的顶点属性，以及用来建立该属性值与片段着色器之间的桥梁的相应的varying变量；
 attribute lowp vec3 NORMAL;
 
-varying lowp vec3 normal;
+lowp vec3 normal;
 
 void main( void ) { 
-
-   normal = ( NORMAL + 1.0 ) * 0.5;
-
-   gl_Position = MODELVIEWPROJECTIONMATRIX * vec4( POSITION, 1.0 );
+    mediump vec3 position = vec3(MODELVIEWMATRIX * vec4(POSITION, 1.0));
+    normal = normalize(NORMALMATRIX * NORMAL);
+    
+    // 计算当前顶点位置的光线方向
+    mediump vec3 lightdirection = normalize(LIGHTPOSITION - position);
+    
+    // 根据光线的方向向量计算当前顶点位置的光强度
+    lowp float ndotl = max(dot(normal, lightdirection), 0.0);
+    
+    // 将光强度乘以光色
+    lightcolor = ndotl * vec3(1.0);
+    
+    gl_Position = PROJECTIONMATRIX * vec4(position, 1.0);
 }

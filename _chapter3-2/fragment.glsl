@@ -24,20 +24,12 @@ as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 
 */
-//用来转换顶点位置的统一矩阵
-uniform mediump mat4 MODELVIEWPROJECTIONMATRIX;
 
-//用来保存顶点位置的顶点属性
-attribute mediump vec3 POSITION;
+varying lowp vec3 lightcolor;
 
-//为顶点法线声明新的顶点属性，以及用来建立该属性值与片段着色器之间的桥梁的相应的varying变量；
-attribute lowp vec3 NORMAL;
+void main( void ) {
+    // 光色加上环境色
+   gl_FragColor = vec4( lightcolor, 1.0 ) + vec4(0.1);
 
-varying lowp vec3 normal;
-
-void main( void ) { 
-
-   normal = ( NORMAL + 1.0 ) * 0.5;
-
-   gl_Position = MODELVIEWPROJECTIONMATRIX * vec4( POSITION, 1.0 );
 }
+  

@@ -73,15 +73,22 @@ void program_draw_callback( void *ptr ) {
 	unsigned int i = 0;
 
 	while( i != curr_program->uniform_count ) {
-
-		if( !strcmp( curr_program->uniform_array[ i ].name, "MODELVIEWPROJECTIONMATRIX" ) ) {
-
-			glUniformMatrix4fv( curr_program->uniform_array[ i ].location,
-								1,
-								GL_FALSE,
-								( float * )GFX_get_modelview_projection_matrix() ); 
-		}
-
+        // 处理投影矩阵
+        if(!strcmp(curr_program->uniform_array[i].name, "MODELVIEWMATRIX")) {
+            glUniformMatrix4fv(curr_program->uniform_array[i].location, 1, GL_FALSE, (float *)GFX_get_modelview_matrix());
+        }
+        // 处理投影矩阵
+        else if(!strcmp(curr_program->uniform_array[i].name, "PROJECTIONMATRIX")) {
+            glUniformMatrix4fv(curr_program->uniform_array[i].location, 1, GL_FALSE, (float *) GFX_get_projection_matrix());
+        }
+        // 处理法线矩阵(仅包含旋转，不包括位置，所以3*3)
+        else if(!strcmp(curr_program->uniform_array[i].name, "NORMALMATRIX")) {
+            glUniformMatrix3fv(curr_program->uniform_array[i].location, 1, GL_FALSE, (float *) GFX_get_normal_matrix());
+        }
+        else if(!strcmp(curr_program->uniform_array[i].name, "LIGHTPOSITION")) {
+            vec3 light = {0.0f, 0.0f, 0.0f};  // 暂时设置光源位置为屏幕的中心点
+            glUniformMatrix3fv(curr_program->uniform_array[i].location, 1, GL_FALSE, (float *) &light);
+        }
 
 		++i;
 	}
